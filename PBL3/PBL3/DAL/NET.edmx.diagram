@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="def110f9b87a4015b62ce0694f94daa9" Name="Diagram1">
+        <EntityTypeShape EntityType="DBNett.bill" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNett.DichVuKH" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNett.Food" Width="1.5" PointX="10.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNett.KhachHang" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNett.KHorder" Width="1.5" PointX="10.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNett.ListFoodOrder" Width="1.5" PointX="12.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNett.may" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNett.NhanVien" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNett.Phong" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNett.TaiKhoan" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBNett.TypeFood" Width="1.5" PointX="8.25" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="DBNett.fk_B_DV" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNett.fk_B_NV" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNett.fk_B_Or" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNett.fk_B_TK" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNett.fk_Food_TypeF" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNett.fk_LOR_F" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNett.pk_TaiKkhoan_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNett.fk_LOR_Or" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNett.fk_OR_M" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNett.pk_may_Phong" ManuallyRouted="false" />
+        <AssociationConnector Association="DBNett.pk_may_TaiKhoan" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

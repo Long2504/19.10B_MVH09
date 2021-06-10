@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="netModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="bill">
+    <Key>
+      <PropertyRef Name="IDBill" />
+    </Key>
+    <Property Name="IDBill" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="IDTK" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="IDOrder" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="TongTien" Type="Int32" />
+    <Property Name="MaDV" Type="Int32" />
+    <NavigationProperty Name="DichVuKH" Relationship="Self.fk_B_DV" FromRole="bill" ToRole="DichVuKH" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.fk_B_NV" FromRole="bill" ToRole="NhanVien" />
+    <NavigationProperty Name="KHorder" Relationship="Self.fk_B_Or" FromRole="bill" ToRole="KHorder" />
+    <NavigationProperty Name="TaiKhoan" Relationship="Self.fk_B_TK" FromRole="bill" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="DichVuKH">
+    <Key>
+      <PropertyRef Name="MaDV" />
+    </Key>
+    <Property Name="MaDV" Type="Int32" Nullable="false" />
+    <Property Name="TenDV" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="bills" Relationship="Self.fk_B_DV" FromRole="DichVuKH" ToRole="bill" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="IDFood" />
+    </Key>
+    <Property Name="IDFood" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenFood" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gia" Type="Int32" />
+    <Property Name="TypeF" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="TypeFood" Relationship="Self.fk_Food_TypeF" FromRole="Food" ToRole="TypeFood" />
+    <NavigationProperty Name="ListFoodOrders" Relationship="Self.fk_LOR_F" FromRole="Food" ToRole="ListFoodOrder" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="IDKH" />
+    </Key>
+    <Property Name="IDKH" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenKH" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CMND" Type="Int32" Nullable="false" />
+    <Property Name="SdtKH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="TaiKhoans" Relationship="Self.pk_TaiKkhoan_KhachHang" FromRole="KhachHang" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="KHorder">
+    <Key>
+      <PropertyRef Name="IDOrder" />
+    </Key>
+    <Property Name="IDOrder" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IDMay" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="TongTien" Type="Int32" />
+    <NavigationProperty Name="bills" Relationship="Self.fk_B_Or" FromRole="KHorder" ToRole="bill" />
+    <NavigationProperty Name="ListFoodOrders" Relationship="Self.fk_LOR_Or" FromRole="KHorder" ToRole="ListFoodOrder" />
+    <NavigationProperty Name="may" Relationship="Self.fk_OR_M" FromRole="KHorder" ToRole="may" />
+  </EntityType>
+  <EntityType Name="may">
+    <Key>
+      <PropertyRef Name="MaMay" />
+    </Key>
+    <Property Name="MaMay" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="Phong" Type="Int32" Nullable="false" />
+    <Property Name="MaDV" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="IDTK" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="TenMay" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KHorders" Relationship="Self.fk_OR_M" FromRole="may" ToRole="KHorder" />
+    <NavigationProperty Name="Phong1" Relationship="Self.pk_may_Phong" FromRole="may" ToRole="Phong" />
+    <NavigationProperty Name="TaiKhoan" Relationship="Self.pk_may_TaiKhoan" FromRole="may" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenNV" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Luong" Type="Int32" />
+    <Property Name="GioiTinh" Type="Boolean" />
+    <Property Name="Tinhtrang" Type="Boolean" />
+    <Property Name="DiaChi" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CMND" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="sdtnv" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="bills" Relationship="Self.fk_B_NV" FromRole="NhanVien" ToRole="bill" />
+  </EntityType>
+  <EntityType Name="Phong">
+    <Key>
+      <PropertyRef Name="IDPhong" />
+    </Key>
+    <Property Name="IDPhong" Type="Int32" Nullable="false" />
+    <Property Name="TenPhong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GiaPhong" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="mays" Relationship="Self.pk_may_Phong" FromRole="Phong" ToRole="may" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="IDTK" />
+    </Key>
+    <Property Name="IDTK" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenTK" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IDKH" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="SoDu" Type="Int32" />
+    <Property Name="MK" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="bills" Relationship="Self.fk_B_TK" FromRole="TaiKhoan" ToRole="bill" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.pk_TaiKkhoan_KhachHang" FromRole="TaiKhoan" ToRole="KhachHang" />
+    <NavigationProperty Name="mays" Relationship="Self.pk_may_TaiKhoan" FromRole="TaiKhoan" ToRole="may" />
+  </EntityType>
+  <EntityType Name="TypeFood">
+    <Key>
+      <PropertyRef Name="IDType" />
+    </Key>
+    <Property Name="IDType" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Foods" Relationship="Self.fk_Food_TypeF" FromRole="TypeFood" ToRole="Food" />
+  </EntityType>
+  <EntityType Name="ListFoodOrder">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="IDOrder" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="IDFood" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="Soluong" Type="Int32" />
+    <Property Name="TongTien" Type="Int32" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Food" Relationship="Self.fk_LOR_F" FromRole="ListFoodOrder" ToRole="Food" />
+    <NavigationProperty Name="KHorder" Relationship="Self.fk_LOR_Or" FromRole="ListFoodOrder" ToRole="KHorder" />
+  </EntityType>
+  <Association Name="fk_B_DV">
+    <End Role="DichVuKH" Type="Self.DichVuKH" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="bill" Type="Self.bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DichVuKH">
+        <PropertyRef Name="MaDV" />
+      </Principal>
+      <Dependent Role="bill">
+        <PropertyRef Name="MaDV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_B_NV">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="bill" Type="Self.bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="bill">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_B_Or">
+    <End Role="KHorder" Type="Self.KHorder" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="bill" Type="Self.bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHorder">
+        <PropertyRef Name="IDOrder" />
+      </Principal>
+      <Dependent Role="bill">
+        <PropertyRef Name="IDOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_B_TK">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+    <End Role="bill" Type="Self.bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="IDTK" />
+      </Principal>
+      <Dependent Role="bill">
+        <PropertyRef Name="IDTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Food_TypeF">
+    <End Role="TypeFood" Type="Self.TypeFood" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Food" Type="Self.Food" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeFood">
+        <PropertyRef Name="IDType" />
+      </Principal>
+      <Dependent Role="Food">
+        <PropertyRef Name="TypeF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_LOR_F">
+    <End Role="Food" Type="Self.Food" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ListFoodOrder" Type="Self.ListFoodOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Food">
+        <PropertyRef Name="IDFood" />
+      </Principal>
+      <Dependent Role="ListFoodOrder">
+        <PropertyRef Name="IDFood" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_TaiKkhoan_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="IDKH" />
+      </Principal>
+      <Dependent Role="TaiKhoan">
+        <PropertyRef Name="IDKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_LOR_Or">
+    <End Role="KHorder" Type="Self.KHorder" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ListFoodOrder" Type="Self.ListFoodOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHorder">
+        <PropertyRef Name="IDOrder" />
+      </Principal>
+      <Dependent Role="ListFoodOrder">
+        <PropertyRef Name="IDOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_OR_M">
+    <End Role="may" Type="Self.may" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="KHorder" Type="Self.KHorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="may">
+        <PropertyRef Name="MaMay" />
+      </Principal>
+      <Dependent Role="KHorder">
+        <PropertyRef Name="IDMay" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_may_Phong">
+    <End Role="Phong" Type="Self.Phong" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="may" Type="Self.may" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phong">
+        <PropertyRef Name="IDPhong" />
+      </Principal>
+      <Dependent Role="may">
+        <PropertyRef Name="Phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_may_TaiKhoan">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="may" Type="Self.may" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="IDTK" />
+      </Principal>
+      <Dependent Role="may">
+        <PropertyRef Name="IDTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBNet" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bills" EntityType="Self.bill" />
+    <EntitySet Name="DichVuKHs" EntityType="Self.DichVuKH" />
+    <EntitySet Name="Foods" EntityType="Self.Food" />
+    <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+    <EntitySet Name="KHorders" EntityType="Self.KHorder" />
+    <EntitySet Name="mays" EntityType="Self.may" />
+    <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+    <EntitySet Name="Phongs" EntityType="Self.Phong" />
+    <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+    <EntitySet Name="TypeFoods" EntityType="Self.TypeFood" />
+    <EntitySet Name="ListFoodOrders" EntityType="Self.ListFoodOrder" />
+    <AssociationSet Name="fk_B_DV" Association="Self.fk_B_DV">
+      <End Role="DichVuKH" EntitySet="DichVuKHs" />
+      <End Role="bill" EntitySet="bills" />
+    </AssociationSet>
+    <AssociationSet Name="fk_B_NV" Association="Self.fk_B_NV">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="bill" EntitySet="bills" />
+    </AssociationSet>
+    <AssociationSet Name="fk_B_Or" Association="Self.fk_B_Or">
+      <End Role="KHorder" EntitySet="KHorders" />
+      <End Role="bill" EntitySet="bills" />
+    </AssociationSet>
+    <AssociationSet Name="fk_B_TK" Association="Self.fk_B_TK">
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+      <End Role="bill" EntitySet="bills" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Food_TypeF" Association="Self.fk_Food_TypeF">
+      <End Role="TypeFood" EntitySet="TypeFoods" />
+      <End Role="Food" EntitySet="Foods" />
+    </AssociationSet>
+    <AssociationSet Name="fk_LOR_F" Association="Self.fk_LOR_F">
+      <End Role="Food" EntitySet="Foods" />
+      <End Role="ListFoodOrder" EntitySet="ListFoodOrders" />
+    </AssociationSet>
+    <AssociationSet Name="pk_TaiKkhoan_KhachHang" Association="Self.pk_TaiKkhoan_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+    </AssociationSet>
+    <AssociationSet Name="fk_LOR_Or" Association="Self.fk_LOR_Or">
+      <End Role="KHorder" EntitySet="KHorders" />
+      <End Role="ListFoodOrder" EntitySet="ListFoodOrders" />
+    </AssociationSet>
+    <AssociationSet Name="fk_OR_M" Association="Self.fk_OR_M">
+      <End Role="may" EntitySet="mays" />
+      <End Role="KHorder" EntitySet="KHorders" />
+    </AssociationSet>
+    <AssociationSet Name="pk_may_Phong" Association="Self.pk_may_Phong">
+      <End Role="Phong" EntitySet="Phongs" />
+      <End Role="may" EntitySet="mays" />
+    </AssociationSet>
+    <AssociationSet Name="pk_may_TaiKhoan" Association="Self.pk_may_TaiKhoan">
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+      <End Role="may" EntitySet="mays" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

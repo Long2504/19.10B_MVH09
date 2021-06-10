@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1E3904B1-B8BD-42A7-AC63-0747C1411770}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PBL3</RootNamespace>
+    <AssemblyName>PBL3</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\BLL_BILL.cs" />
+    <Compile Include="BLL\BLL_DV.cs" />
+    <Compile Include="BLL\BLL_Food.cs" />
+    <Compile Include="BLL\BLL_MAY.cs" />
+    <Compile Include="BLL\BLL_NV.cs" />
+    <Compile Include="BLL\BLL_TK.cs" />
+    <Compile Include="BLL\CBBitem.cs" />
+    <Compile Include="DAL\bill.cs">
+      <DependentUpon>NET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DichVuKH.cs">
+      <DependentUpon>NET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Food.cs">
+      <DependentUpon>NET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\KhachHang.cs">
+      <DependentUpon>NET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\KHorder.cs">
+      <DependentUpon>NET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ListFoodOrder.cs">
+      <DependentUpon>NET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\may.cs">
+      <DependentUpon>NET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\NET.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NET.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\NET.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\NET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NET.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\NhanVien.cs">
+      <DependentUpon>NET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Phong.cs">
+      <DependentUpon>NET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TaiKhoan.cs">
+      <DependentUpon>NET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TypeFood.cs">
+      <DependentUpon>NET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\connectSERVER.cs" />
+    <Compile Include="GUI\Food-DB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Food-DB.Designer.cs">
+      <DependentUpon>Food-DB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\MAY-DB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MAY-DB.Designer.cs">
+      <DependentUpon>MAY-DB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Nap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Nap.Designer.cs">
+      <DependentUpon>Nap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\NV-DB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NV-DB.Designer.cs">
+      <DependentUpon>NV-DB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TKKH-DB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TKKH-DB.Designer.cs">
+      <DependentUpon>TKKH-DB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControlBill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControlBill.Designer.cs">
+      <DependentUpon>UserControlBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControlF.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControlF.Designer.cs">
+      <DependentUpon>UserControlF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControlMAY.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControlMAY.Designer.cs">
+      <DependentUpon>UserControlMAY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControlNV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControlNV.Designer.cs">
+      <DependentUpon>UserControlNV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\UserControlTK.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UserControlTK.Designer.cs">
+      <DependentUpon>UserControlTK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Nap.resx">
+      <DependentUpon>Nap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TKKH-DB.resx">
+      <DependentUpon>TKKH-DB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControlBill.resx">
+      <DependentUpon>UserControlBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControlF.resx">
+      <DependentUpon>UserControlF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControlMAY.resx">
+      <DependentUpon>UserControlMAY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControlNV.resx">
+      <DependentUpon>UserControlNV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UserControlTK.resx">
+      <DependentUpon>UserControlTK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EntityDeploy Include="DAL\NET.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NET.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DAL\NET.edmx.diagram">
+      <DependentUpon>NET.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DAL\NET.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NET.edmx</DependentUpon>
+      <LastGenOutput>NET.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\NET.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NET.edmx</DependentUpon>
+      <LastGenOutput>NET.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
